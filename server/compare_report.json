@@ -1,0 +1,882 @@
+[
+  {
+    "id": "n1",
+    "type": "numeric",
+    "q": "LEVIR-CD 数据集上 F1 最高的方法是哪个?数值是多少?",
+    "A": {
+      "answer": "LEVIR-CD 上 F1 最高的是 **SemDINO (Ours)**,F1 = **92.97%**[1]。其后依次为 LWGANet 与 Ensemble of Best Specialists(均 92.42)[2][3]、VFM(92.41)[4]、ChangeDINO 的 Ours(92.31)[5]。",
+      "cites": [
+        {
+          "text": "SemDINO (Ours) · LEVIR-CD F1=92.97",
+          "src": "arXiv:2606.09772v3"
+        },
+        {
+          "text": "LWGANet (AAAI 26) · LEVIR-CD F1=92.42",
+          "src": "arXiv:2601.14797v1"
+        },
+        {
+          "text": "Ensemble of Best Specialists · LEVIR-CD F1=92.42",
+          "src": "arXiv:2601.14797v1"
+        },
+        {
+          "text": "VFM · LEVIR-CD F1=92.41",
+          "src": "arXiv:2608.07982v1"
+        },
+        {
+          "text": "Ours · LEVIR-CD F1=92.31",
+          "src": "arXiv:2511.16322v1"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → lookup_metric(数字查表通道)",
+          "time": "4.84s"
+        },
+        {
+          "agent": "num-table",
+          "action": "指标库检索 LEVIR-CD × F1 → 命中 539 条,取 top-5",
+          "time": "0.01s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 5 条证据生成回答(温度 0,可复现)",
+          "time": "5.75s"
+        }
+      ],
+      "latency": 10.6,
+      "ok": true
+    },
+    "B": {
+      "answer": "根据我掌握的信息，**ChangeFormer** 在 LEVIR-CD 数据集上曾达到约 **90.4%** 的 F1 分数，是该数据集上表现最好的方法之一。\n\n不过，变化检测领域发展迅速，可能已有更新的方法（如基于 Transformer 的改进模型或扩散模型）取得了更高的 F1 分数。建议查阅最新的论文或 Papers with Code 获取最准确的当前最佳结果。",
+      "latency": 6.95,
+      "ok": true
+    },
+    "C": {
+      "answer": "根据提供的网络搜索结果，无法确定LEVIR-CD数据集上F1最高的具体方法及数值。\n\n搜索结果仅提及三篇论文在LEVIR-CD数据集上报告了对比结果[1][2][3]，但均未提供具体的F1分数数值。其中文献[1]明确提到其Table I报告了该模型与所有对比模型在LEVIR-CD测试集上的总体比较结果，但摘要中未列出具体数据。\n\n要获取准确答案，需要查阅这些论文的全文表格。建议直接访问文献[1]（IEEE Xplore）查看Table I中的详细数值。",
+      "latency": 7.58,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 159,
+      "value_hit": true,
+      "method_hit": true,
+      "hallucination_count": 0,
+      "refused": false,
+      "cite": {
+        "cited": 5,
+        "verified": 5
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 187,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 1,
+      "refused": false,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 228,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": true,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "n2",
+    "type": "numeric",
+    "q": "WHU-CD 数据集上 F1 最高的方法是哪个?数值是多少?",
+    "A": {
+      "answer": "基于现有证据，WHU-CD 数据集上 F1 最高的方法是 **Ours**（来自 FAF-CD 论文），其 cf1 = **95.37** [1]。该数值略高于 NeXt2Former-CD 的 95.31 [3] 和 3D-SSM 的 95.30 [4]。",
+      "cites": [
+        {
+          "text": "Ours · WHU-CD F1=95.37",
+          "src": "arXiv:2606.03114v1"
+        },
+        {
+          "text": "✓ · WHU-CD F1=95.32",
+          "src": "arXiv:2601.16573v1"
+        },
+        {
+          "text": "NeXt2Former-CD [25] · WHU-CD F1=95.31",
+          "src": "arXiv:2606.03114v1"
+        },
+        {
+          "text": "3D-SSM · WHU-CD F1=95.30",
+          "src": "arXiv:2506.19263v1"
+        },
+        {
+          "text": "✓ ✓ · WHU-CD F1=95.30",
+          "src": "arXiv:2506.19263v1"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → lookup_metric(数字查表通道)",
+          "time": "5.37s"
+        },
+        {
+          "agent": "num-table",
+          "action": "指标库检索 WHU-CD × F1 → 命中 476 条,取 top-5",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 5 条证据生成回答(温度 0,可复现)",
+          "time": "9.54s"
+        }
+      ],
+      "latency": 14.92,
+      "ok": true
+    },
+    "B": {
+      "answer": "在 WHU-CD 数据集上，目前公开报道中 F1 最高的是 **ChangeFormer**，F1 约为 **90.40%**（IoU 约 82.48%）。不同论文因划分与实现差异，数值可能略有浮动。",
+      "latency": 3.15,
+      "ok": true
+    },
+    "C": {
+      "answer": "根据提供的网络搜索结果，无法确定 WHU-CD 数据集上 F1 最高的具体方法及其数值。\n\n结果[1]仅提供了 WHU-CD 数据集的指标结果文件，但未列出具体数值；结果[2]提到在 WHU-CD 等数据集上报告了比较结果，但同样未给出具体数据。因此，基于现有信息无法回答该问题。",
+      "latency": 10.81,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 129,
+      "value_hit": true,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": false,
+      "cite": {
+        "cited": 5,
+        "verified": 5
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 100,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 2,
+      "refused": false,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 140,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": true,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "n3",
+    "type": "numeric",
+    "q": "SECOND 数据集上 F1 最高的方法是哪个?数值是多少?",
+    "A": {
+      "answer": "基于现有语料无法确定。证据中 SCL 的 78.36 是 whu-cd.f1[1],其余方法均为 levir-cd.f1[2][3][4][5],指标不一致,无法直接比较。若仅比较 levir-cd.f1,最高为 USSFC-Net,70.34[2]。",
+      "cites": [
+        {
+          "text": "SCL(Ours) · SECOND F1=78.36",
+          "src": "arXiv:2404.11326v5"
+        },
+        {
+          "text": "USSFC-Net [19] · SECOND F1=70.34",
+          "src": "arXiv:2404.11326v5"
+        },
+        {
+          "text": "BiT [6] · SECOND F1=70.23",
+          "src": "arXiv:2404.11326v5"
+        },
+        {
+          "text": "ChangeCLIP [11] · SECOND F1=69.37",
+          "src": "arXiv:2404.11326v5"
+        },
+        {
+          "text": "ChangeFormer [2] · SECOND F1=67.47",
+          "src": "arXiv:2404.11326v5"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → lookup_metric(数字查表通道)",
+          "time": "10.63s"
+        },
+        {
+          "agent": "num-table",
+          "action": "指标库检索 SECOND × F1 → 命中 59 条,取 top-5",
+          "time": "0.01s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 5 条证据生成回答(温度 0,可复现)",
+          "time": "7.00s"
+        }
+      ],
+      "latency": 17.64,
+      "ok": true
+    },
+    "B": {
+      "answer": "在 SECOND 数据集上，目前 F1 最高的方法通常认为是 **ChangeMask**，其 **F1 约为 73.6%**（不同论文复现可能略有差异）。",
+      "latency": 3.07,
+      "ok": true
+    },
+    "C": {
+      "answer": "根据提供的网络搜索结果，无法确定SECOND数据集上F1最高的方法及其具体数值。\n\n搜索结果仅提供了两篇论文的标题和来源链接[1][2]，但未包含任何关于SECOND数据集实验结果、性能对比表格或具体F1分数的信息。因此无法从这些结果中判断哪个方法在该数据集上取得了最高的F1分数。",
+      "latency": 8.88,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 126,
+      "value_hit": true,
+      "method_hit": true,
+      "hallucination_count": 0,
+      "refused": false,
+      "cite": {
+        "cited": 5,
+        "verified": 5
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 78,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 1,
+      "refused": false,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 141,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": true,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "n4",
+    "type": "numeric",
+    "q": "SYSU-CD 数据集上 F1 最高的方法是哪个?数值是多少?",
+    "A": {
+      "answer": "基于现有语料，SYSU-CD 数据集上 F1 最高的方法是 **3D-SSM**，其 F1 值为 **84.90** [1]。其他证据（如 SIM、✓ 等）的 F1 值均为 84.90，与 3D-SSM 相同，但 3D-SSM 是明确列出的方法名称 [1][2][3][4][5]。",
+      "cites": [
+        {
+          "text": "3D-SSM · SYSU-CD F1=84.90",
+          "src": "arXiv:2506.19263v1"
+        },
+        {
+          "text": "✓ ✓ · SYSU-CD F1=84.90",
+          "src": "arXiv:2506.19263v1"
+        },
+        {
+          "text": "✓ · SYSU-CD F1=84.90",
+          "src": "arXiv:2506.19263v1"
+        },
+        {
+          "text": "SIM · SYSU-CD F1=84.90",
+          "src": "arXiv:2506.19263v1"
+        },
+        {
+          "text": "0.5 · SYSU-CD F1=84.90",
+          "src": "arXiv:2506.19263v1"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → lookup_metric(数字查表通道)",
+          "time": "8.13s"
+        },
+        {
+          "agent": "num-table",
+          "action": "指标库检索 SYSU-CD × F1 → 命中 185 条,取 top-5",
+          "time": "0.01s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 5 条证据生成回答(温度 0,可复现)",
+          "time": "4.32s"
+        }
+      ],
+      "latency": 12.46,
+      "ok": true
+    },
+    "B": {
+      "answer": "根据我掌握的信息，在 **SYSU-CD** 数据集上，目前公开报道中 **F1-score** 最高的方法之一是 **ChangeFormer**，其 F1 值约为 **0.841**（即 84.1%）。\n\n不过，不同论文的实验设置（如 backbone、训练策略、数据划分）可能存在差异，建议以最新发表的论文或官方 benchmark 结果为准。",
+      "latency": 9.66,
+      "ok": true
+    },
+    "C": {
+      "answer": "根据提供的网络搜索结果，无法确定 SYSU-CD 数据集上 F1 最高的方法及其数值。\n\n搜索结果仅提及 DFSMCG-Net 中 Spatial-Channel Attention 的召回率（77.24%）和精确率（84.38%）[1]，但未提供 F1 分数，也未与其他方法进行性能对比，因此无法判断最高 F1 方法。",
+      "latency": 3.31,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 141,
+      "value_hit": true,
+      "method_hit": true,
+      "hallucination_count": 0,
+      "refused": false,
+      "cite": {
+        "cited": 5,
+        "verified": 5
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 175,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 2,
+      "refused": false,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 160,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": true,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "n5",
+    "type": "numeric",
+    "q": "CDD 数据集上 F1 最高的方法是哪个?数值是多少?",
+    "A": {
+      "answer": "CDD 数据集上 F1 最高的是 CANet-O[R]，f1(%) = 97.95[1]。其后依次为 ChangeClip 97.85[2]、CANet-O[M] 97.84[3]、CANet-O[Ia] 97.82[4]、CANet-O[Ib] 97.66[5]。",
+      "cites": [
+        {
+          "text": "CANet-O[R] · CDD F1=97.95",
+          "src": "arXiv:2504.19598v1"
+        },
+        {
+          "text": "ChangeClip · CDD F1=97.85",
+          "src": "arXiv:2504.19598v1"
+        },
+        {
+          "text": "CANet-O[M] · CDD F1=97.84",
+          "src": "arXiv:2504.19598v1"
+        },
+        {
+          "text": "CANet-O[Ia] · CDD F1=97.82",
+          "src": "arXiv:2504.19598v1"
+        },
+        {
+          "text": "CANet-O[Ib] · CDD F1=97.66",
+          "src": "arXiv:2504.19598v1"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → lookup_metric(数字查表通道)",
+          "time": "5.58s"
+        },
+        {
+          "agent": "num-table",
+          "action": "指标库检索 CDD × F1 → 命中 110 条,取 top-5",
+          "time": "0.01s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 5 条证据生成回答(温度 0,可复现)",
+          "time": "8.25s"
+        }
+      ],
+      "latency": 13.84,
+      "ok": true
+    },
+    "B": {
+      "answer": "在 CDD 数据集上，目前 F1 最高的是 **ChangeFormer**，F1 约为 **0.940**。",
+      "latency": 5.47,
+      "ok": true
+    },
+    "C": {
+      "answer": "根据提供的网络搜索结果，无法确定CDD数据集上F1最高的具体方法及数值。\n\n结果[1]仅提到\"Tab IV reports the quantitative comparison results on the CDD dataset\"，结果[2]仅说明该框架在LEVIR-CD、WHU-CD、CDD数据集上进行了比较，但两者均未给出具体的F1分数或排名最高的方法名称。",
+      "latency": 5.02,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 133,
+      "value_hit": true,
+      "method_hit": true,
+      "hallucination_count": 0,
+      "refused": false,
+      "cite": {
+        "cited": 5,
+        "verified": 5
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 55,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 1,
+      "refused": false,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 184,
+      "value_hit": false,
+      "method_hit": false,
+      "hallucination_count": 0,
+      "refused": true,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "c1",
+    "type": "concept",
+    "q": "无监督变化检测有哪些主流思路?",
+    "A": {
+      "answer": "基于现有语料，无监督变化检测主流思路包括：\n\n1. **深度度量学习**：通过深度度量学习（deep metric learning）提取特征，无需标注数据即可检测多期遥感影像变化[2]。\n\n2. **基于生成器重构的风格迁移**：利用生成器网络对多期影像进行重构以实现风格迁移，将不可重构区域识别为变化区域[3]。\n\n3. **一致性检测框架**：如CCDF（Consistency Change Detection Framework），通过引入一致性约束解决生成器过拟合问题，提升无监督检测性能[3]。\n\n注：证据[1]主要讨论样本高效深度学习总体框架，未具体展开无监督方法细节。",
+      "cites": [
+        {
+          "text": "A Survey of Sample-Efficient Deep Learning for Change Detection in Remote Sensing: Tasks, Strategies, and Challenges",
+          "src": "arXiv:2502.02835v1 · 2025"
+        },
+        {
+          "text": "Deep Metric Learning for Unsupervised Remote Sensing Change Detection",
+          "src": "arXiv:2303.09536v1 · 2023"
+        },
+        {
+          "text": "Consistency Change Detection Framework for Unsupervised Remote Sensing Change Detection",
+          "src": "arXiv:2511.08904v1 · 2025"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → search_papers(论文检索通道)",
+          "time": "9.52s"
+        },
+        {
+          "agent": "retrieval",
+          "action": "查询改写:「无监督变化检测有哪些主流思路?…」→「unsupervised change detection remote sensing survey methods」;BM25 召回 top-3",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 3 条证据生成回答(温度 0,可复现)",
+          "time": "4.61s"
+        }
+      ],
+      "latency": 14.14,
+      "ok": true
+    },
+    "B": {
+      "answer": "无监督变化检测主流思路包括：\n\n1. **图像代数法**：差值法（Image Differencing）、比值法（Image Ratioing）、变化向量分析（CVA），通过像素级运算生成差异图，再用阈值分割（如Otsu、K-means）提取变化区域。\n\n2. **图像变换法**：主成分分析（PCA）、独立成分分析（ICA）、慢特征分析（SFA），将双时相特征投影到变换空间，利用主成分差异检测变化。\n\n3. **分类后比较**：分别对双时相图像进行无监督聚类（如ISODATA），对比分类结果识别变化类型。\n\n4. **深度学习方法**：基于自编码器（AE）、生成对抗网络（GAN）或对比学习（Contrastive Learning）提取深度特征，通过特征重构误差或特征距离度量变化，无需标注数据。\n\n5. **对象级分析**：结合分割算法（如SLIC超像素）提取对象，在对象尺度进行光谱-纹理特征比较，减少椒盐噪声。",
+      "latency": 5.84,
+      "ok": true
+    },
+    "C": {
+      "answer": "无监督变化检测主流思路包括：传统聚类与阈值分析（如差分/比值后聚类或阈值分割）[1]；自监督学习，通过预训练提取特征再检测变化[1]；以及针对SAR等数据的深度网络方法，如协同变化一致性网络[3]。",
+      "latency": 5.74,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 293,
+      "cite": {
+        "cited": 3,
+        "verified": 3
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 5,
+      "chars": 412,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 99,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "c2",
+    "type": "concept",
+    "q": "扩散模型在变化检测里是怎么用的?",
+    "A": {
+      "answer": "扩散模型在变化检测中主要有三种用法：\n\n1. **作为特征提取器**：DDPM-CD 通过预训练 Denoising Diffusion Probabilistic Model (DDPM)，利用现成的无标签遥感图像学习数据分布，从而提取特征用于变化检测 [3]。\n\n2. **作为样本生成器**：ChangeAnywhere 利用 semantic latent diffusion model 和单时相图像生成变化检测样本，以缓解密集标注耗时且需专家知识的问题 [2]。\n\n3. **作为核心检测框架**：Hierarchical Attention Diffusion Networks 将去噪扩散模型与多尺度注意力结合，通过 Mask R-CNN 隔离时序新对象，经层次交叉注意力引导扩散更新，最终进行逐像素语义分类生成多类变化图 [1]。",
+      "cites": [
+        {
+          "text": "Hierarchical Attention Diffusion Networks with Object Priors for Video Change Detection",
+          "src": "arXiv:2408.10619v2 · 2024"
+        },
+        {
+          "text": "ChangeAnywhere: Sample Generation for Remote Sensing Change Detection via Semantic Latent Diffusion Model",
+          "src": "arXiv:2404.08892v1 · 2024"
+        },
+        {
+          "text": "DDPM-CD: Denoising Diffusion Probabilistic Models as Feature Extractors for Change Detection",
+          "src": "arXiv:2206.11892v3 · 2022"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → search_papers(论文检索通道)",
+          "time": "4.47s"
+        },
+        {
+          "agent": "retrieval",
+          "action": "查询改写:「扩散模型在变化检测里是怎么用的?…」→「diffusion model remote sensing change detection」;BM25 召回 top-3",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 3 条证据生成回答(温度 0,可复现)",
+          "time": "5.63s"
+        }
+      ],
+      "latency": 10.12,
+      "ok": true
+    },
+    "B": {
+      "answer": "扩散模型在变化检测中主要有三种用法：\n\n**1. 生成式特征增强**\n用 DDPM 或 Stable Diffusion 生成配对的\"变化后\"图像，扩充训练数据，解决样本稀缺问题。例如根据文本提示生成建筑拆除/新建场景。\n\n**2. 去噪式特征提取**\n将双时相图像输入预训练扩散模型，利用其多尺度去噪特征进行变化识别。扩散过程天然分离语义信息与噪声，对伪变化（光照、季节）更鲁棒。\n\n**3. 直接变化图生成**\n将变化检测建模为条件生成任务：以前景图像为条件，通过反向扩散逐步生成变化掩膜。代表工作如 DiffChange、CD-Diff 等。\n\n优势在于强大的表征能力和不确定性建模，但推理速度较慢，常需蒸馏或步数压缩。",
+      "latency": 7.49,
+      "ok": true
+    },
+    "C": {
+      "answer": "扩散模型在遥感变化检测中主要有两种用法：一是作为生成器，通过语义编辑合成变化图像，把“变化”显式地生成出来，缓解样本不足并增强对变化区域的刻画[2]；二是作为判别式建模框架，将变化检测转化为状态驱动的离散扩散过程，并引入 cohesive attention embedding 来强化双时相特征关联与变化区域定位[1]。总体上，前者偏“造数据/造变化”，后者偏“用扩散建模变化状态”[1][2]。",
+      "latency": 6.26,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 374,
+      "cite": {
+        "cited": 3,
+        "verified": 3
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 313,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 199,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "c3",
+    "type": "concept",
+    "q": "Transformer 在变化检测中的应用有哪些?",
+    "A": {
+      "answer": "基于现有语料，Transformer 在变化检测中的应用可概括为三类：\n\n1. **长程时空依赖建模**：用 self-attention 关联空间—时间上的远距离语义，缓解同物异谱/异物同谱导致的伪变化，提升高分辨率 CD 的判别能力[1]。  \n2. **时空交互式特征提取**：将 Siamese 双时相特征提取与 Transformer 的时空交互结合，增强双时态特征对齐与变化表征（如 STeInFormer）[2]。  \n3. **与 CNN 互补融合**：以 Transformer 捕获全局/长程依赖、CNN 提取局部细节，通过动态聚焦/渐进融合抑制伪变化并保留真实变化区域（如 DFPF-Net）[3]。\n\n注：证据未给出具体指标与数据集名称，故不引用数值。",
+      "cites": [
+        {
+          "text": "Remote Sensing Image Change Detection with Transformers",
+          "src": "arXiv:2103.00208v3 · 2021"
+        },
+        {
+          "text": "STeInFormer: Spatial-Temporal Interaction Transformer Architecture for Remote Sensing Change Detection",
+          "src": "arXiv:2412.17247v1 · 2024"
+        },
+        {
+          "text": "DFPF-Net: Dynamically Focused Progressive Fusion Network for Remote Sensing Change Detection",
+          "src": "arXiv:2603.09106v1 · 2026"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → search_papers(论文检索通道)",
+          "time": "7.35s"
+        },
+        {
+          "agent": "retrieval",
+          "action": "查询改写:「Transformer 在变化检测中…」→「transformer change detection remote sensing」;BM25 召回 top-3",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 3 条证据生成回答(温度 0,可复现)",
+          "time": "6.39s"
+        }
+      ],
+      "latency": 13.75,
+      "ok": true
+    },
+    "B": {
+      "answer": "Transformer 在变化检测中主要有以下应用方向：\n\n**1. 骨干网络（Backbone）**\n- 使用 **Vision Transformer (ViT)**、**Swin Transformer** 替代 CNN 提取多尺度特征，增强全局上下文建模能力，如 BIT、ChangeFormer。\n\n**2. 双时相特征交互**\n- 通过 **Cross-Attention** 机制建模前后影像的时空依赖，如 **Siamese Transformer** 结构，提升变化区域定位精度。\n\n**3. 多尺度特征融合**\n- 利用 **Transformer Encoder-Decoder** 融合不同层级特征，解决小目标变化漏检问题。\n\n**4. 长序列时序分析**\n- 处理 **SITS（Satellite Image Time Series）**，捕捉长期时序演变规律。\n\n**5. 轻量化设计**\n- 结合 CNN 与 Transformer 的混合架构（如 **MobileViT**），平衡精度与效率。\n\n典型模型：**BIT**、**ChangeFormer**、**SwinSUNet**、**DSIFN**。",
+      "latency": 7.78,
+      "ok": true
+    },
+    "C": {
+      "answer": "Transformer 在变化检测中的应用主要包括：灾后评估，通过解码器增强与边界细化提升建筑损毁识别精度[1]；建筑物变化检测，在 ChangeFormer 中引入可变形注意力以增强对形变与尺度变化的建模[2]；高分辨率遥感影像的多尺度孪生框架，利用 Transformer 捕获多尺度特征与长程依赖，提高变化区域定位与识别能力[3]。",
+      "latency": 6.52,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 338,
+      "cite": {
+        "cited": 3,
+        "verified": 3
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 5,
+      "chars": 520,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 169,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "c4",
+    "type": "concept",
+    "q": "ChangeFormer 的核心创新是什么?",
+    "A": {
+      "answer": "ChangeFormer 的核心创新在于:不同于以往基于全卷积网络(ConvNets)的变化检测框架,它将**层级结构的 Transformer 编码器**与 **MLP 解码器**统一于**孪生网络(Siamese network)**架构中,从而高效获取精确变化检测所需的多尺度长距离细节信息,且整个模型可端到端训练[1]。",
+      "cites": [
+        {
+          "text": "A Transformer-Based Siamese Network for Change Detection",
+          "src": "arXiv:2201.01293v7 · 2022"
+        },
+        {
+          "text": "ELGC-Net: Efficient Local-Global Context Aggregation for Remote Sensing Change Detection",
+          "src": "arXiv:2403.17909v1 · 2024"
+        },
+        {
+          "text": "Remote Sensing Image Change Detection with Transformers",
+          "src": "arXiv:2103.00208v3 · 2021"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → search_papers(论文检索通道)",
+          "time": "15.48s"
+        },
+        {
+          "agent": "retrieval",
+          "action": "查询改写:「ChangeFormer 的核心创新…」→「ChangeFormer transformer change detection innovation」;BM25 召回 top-3",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 3 条证据生成回答(温度 0,可复现)",
+          "time": "5.28s"
+        }
+      ],
+      "latency": 20.76,
+      "ok": true
+    },
+    "B": {
+      "answer": "ChangeFormer 的核心创新在于将 **Transformer** 架构引入遥感变化检测任务，构建了一个**纯 Transformer 的孪生网络（Siamese Network）**。\n\n具体包括：\n1. **层次化 Transformer 编码器**：替代传统 CNN，有效捕获双时相图像的长距离依赖关系和多尺度上下文信息。\n2. **轻量级 MLP 解码器**：通过简单的多层感知机融合多尺度特征，实现高效解码。\n3. **差异模块（Difference Module）**：直接计算双时相特征差异，增强变化区域的表征能力。\n\n相比 CNN 方法，ChangeFormer 在保持较低计算成本的同时，显著提升了变化检测精度，证明了 Transformer 在该任务中的有效性。",
+      "latency": 7.95,
+      "ok": true
+    },
+    "C": {
+      "answer": "ChangeFormer 的核心创新在于将 Transformer 架构引入遥感变化检测，通过自注意力机制有效捕获双时相影像的长距离依赖关系，从而提升变化区域的识别精度。后续研究进一步引入可变形注意力 Transformer 以增强建筑变化检测性能[1]，并改进基于 Transformer 的方法用于灾后评估[2]。",
+      "latency": 3.84,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 164,
+      "cite": {
+        "cited": 3,
+        "verified": 3
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 345,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 159,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  },
+  {
+    "id": "c5",
+    "type": "concept",
+    "q": "自监督学习在变化检测中的作用?",
+    "A": {
+      "answer": "自监督学习在变化检测中的作用主要体现在三方面:\n\n1. **缓解标注依赖**:变化检测需双时相像素级标注,复杂且耗时;SSLChange 通过 domain adapter 与 hierarchical contrastive head 实现自学习,仅依赖无标注数据即可训练[2]。\n\n2. **增强特征表示与伪变化抑制**:TSLCD 引入 task-related self-supervised learning 模块提取空间-光谱特征,改善 CNN 方法中伪变化抑制不足与特征表示不充分的问题[1]。\n\n3. **多模态预训练提升性能**:CSIP 利用重叠的 2D/3D 模态(光学 RGB 与地表高程)进行对比预训练,所得表征超越仅用光学影像训练的视觉模型[3]。\n\n综上,自监督学习通过无标注预训练与对比学习,降低标注成本并提升变化检测的表征能力与精度。",
+      "cites": [
+        {
+          "text": "Task-Related Self-Supervised Learning for Remote Sensing Image Change Detection",
+          "src": "arXiv:2105.04951v2 · 2021"
+        },
+        {
+          "text": "SSLChange: A Self-supervised Change Detection Framework Based on Domain Adaptation",
+          "src": "arXiv:2405.18224v1 · 2024"
+        },
+        {
+          "text": "Supervising Remote Sensing Change Detection Models with 3D Surface Semantics",
+          "src": "arXiv:2202.13251v1 · 2022"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "orchestrator",
+          "action": "意图路由 → search_papers(论文检索通道)",
+          "time": "24.69s"
+        },
+        {
+          "agent": "retrieval",
+          "action": "查询改写:「自监督学习在变化检测中的作用?…」→「self-supervised learning change detection」;BM25 召回 top-3",
+          "time": "0.00s"
+        },
+        {
+          "agent": "fusion",
+          "action": "基于 3 条证据生成回答(温度 0,可复现)",
+          "time": "10.13s"
+        }
+      ],
+      "latency": 34.83,
+      "ok": true
+    },
+    "B": {
+      "answer": "自监督学习在变化检测中主要解决标注数据稀缺问题。通过设计pretext task（如时序图像重建、对比学习、掩码预测），模型可从大量无标注双时相遥感影像中学习通用特征表示，再迁移至下游变化检测任务。典型方法包括对比学习（如SimCLR变体）和masked autoencoder，能显著提升模型在少样本场景下的泛化能力，降低对人工标注的依赖。",
+      "latency": 12.03,
+      "ok": true
+    },
+    "C": {
+      "answer": "自监督学习在变化检测中主要作用包括：1) 利用无标注遥感影像学习通用表征，缓解标注数据稀缺问题，提升模型泛化能力[1]；2) 通过时序预测、对比学习等代理任务，从任意长度密集时间序列中自动挖掘变化模式，实现无监督变化检测[2]；3) 降低对人工标注的依赖，提高模型在跨区域、跨传感器场景下的迁移能力[1]。",
+      "latency": 4.3,
+      "ok": true
+    },
+    "A_score": {
+      "ok": true,
+      "points": 3,
+      "chars": 384,
+      "cite": {
+        "cited": 3,
+        "verified": 3
+      }
+    },
+    "B_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 171,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    },
+    "C_score": {
+      "ok": true,
+      "points": 1,
+      "chars": 153,
+      "cite": {
+        "cited": 0,
+        "verified": 0
+      }
+    }
+  }
+]

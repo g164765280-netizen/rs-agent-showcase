@@ -5,6 +5,7 @@ import Architecture from './components/Architecture'
 import Features from './components/Features'
 import Pipeline from './components/Pipeline'
 import Demo from './components/Demo'
+import Benchmark from './components/Benchmark'
 import Footer from './components/Footer'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Features />
         <Pipeline />
         <Demo />
+        <Benchmark />
       </main>
       <Footer />
     </div>

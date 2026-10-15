@@ -1,0 +1,12 @@
+[
+  {"id": "n1", "type": "numeric", "q": "LEVIR-CD 数据集上 F1 最高的方法是哪个?数值是多少?", "gt_value": 92.97, "gt_method": "SemDINO"},
+  {"id": "n2", "type": "numeric", "q": "WHU-CD 数据集上 F1 最高的方法是哪个?数值是多少?", "gt_value": 95.37, "gt_method": ""},
+  {"id": "n3", "type": "numeric", "q": "SECOND 数据集上 F1 最高的方法是哪个?数值是多少?", "gt_value": 78.36, "gt_method": "SCL"},
+  {"id": "n4", "type": "numeric", "q": "SYSU-CD 数据集上 F1 最高的方法是哪个?数值是多少?", "gt_value": 84.9, "gt_method": "3D-SSM"},
+  {"id": "n5", "type": "numeric", "q": "CDD 数据集上 F1 最高的方法是哪个?数值是多少?", "gt_value": 97.95, "gt_method": "CANet"},
+  {"id": "c1", "type": "concept", "q": "无监督变化检测有哪些主流思路?"},
+  {"id": "c2", "type": "concept", "q": "扩散模型在变化检测里是怎么用的?"},
+  {"id": "c3", "type": "concept", "q": "Transformer 在变化检测中的应用有哪些?"},
+  {"id": "c4", "type": "concept", "q": "ChangeFormer 的核心创新是什么?"},
+  {"id": "c5", "type": "concept", "q": "自监督学习在变化检测中的作用?"}
+]

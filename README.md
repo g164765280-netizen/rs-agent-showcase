@@ -35,6 +35,19 @@ pnpm preview    # 本地预览构建产物
 
 部署:把 `dist/` 丢到任意静态托管(Vercel / Netlify / GitHub Pages)即可。
 
+## 对比实验(可复现)
+
+10 道领域题 × 3 组(本系统 RAG / 裸模型 / 联网搜索+LLM),同一模型控制变量:
+
+| | RS-Agent | 裸模型 | 联网+LLM |
+|---|---|---|---|
+| 数字题命中 | **5/5** | 0/5(7 个幻觉数字) | 0/5(全拒答) |
+| 引用可溯源 | **40/40** | 0 | 0 |
+| 平均延迟 | 16.3s | 6.9s | 6.2s |
+
+复现:`cd server && ./run.sh`(启动实机后端)后另开终端执行 `./.venv/bin/python compare_eval.py`,
+题目在 `eval_questions.json`,原始结果在 `compare_report.json`。
+
 ## 页面结构
 
 | 区块 | 内容 |

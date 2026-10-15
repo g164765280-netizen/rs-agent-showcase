@@ -22,6 +22,7 @@ export default function Nav() {
           <a href="#features">核心技术</a>
           <a href="#pipeline">关键链路</a>
           <a href="#demo">在线演示</a>
+          <a href="#benchmark">对比实验</a>
           <a className="nav-cta" href="#demo">▶ Live Demo</a>
         </div>
       </div>
