@@ -13,6 +13,19 @@ pnpm install
 pnpm dev        # http://127.0.0.1:5173/
 ```
 
+## 实机演示通道(可选,面试现场真跑)
+
+展示页「实机演示」Tab 连接本地 FastAPI 后端:**真实检索**(120 篇论文摘要 BM25 + 8657 条指标库查表)+ **真实 LLM API** 编排生成(任意 OpenAI 兼容接口)。
+
+```bash
+cd server
+cp .env.example .env   # 填入 OPENAI_API_KEY / OPENAI_API_BASE / DEMO_MODEL
+./run.sh               # 监听 127.0.0.1:8790
+```
+
+链路:问题 → LLM 意图路由(自实现 tool_call 协议)→ 真实工具执行 → LLM 基于证据生成 → trace + 引用。
+API Key 仅存服务端 `.env`(已 gitignore),不进入前端代码。GitHub Pages 线上版不含此通道。
+
 ## 构建与部署
 
 ```bash
