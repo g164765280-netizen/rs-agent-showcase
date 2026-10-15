@@ -85,18 +85,32 @@ MODEL = os.environ.get("DEMO_MODEL", "deepseek-chat")
 async def llm(messages, max_tokens=4096) -> str:
     if not API_KEY:
         raise RuntimeError("NO_API_KEY")
-    async with httpx.AsyncClient(timeout=120) as cli:
-        r = await cli.post(
-            f"{API_BASE}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {API_KEY}",
-                # 部分网关按 UA 拦截 python 客户端,伪装浏览器
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
-            },
-            json={"model": MODEL, "messages": messages, "temperature": 0, "max_tokens": max_tokens},
-        )
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"].strip()
+    last_err: Exception | None = None
+    # 共享网关偶发排队/超时:收紧超时 + 重试一次
+    for attempt in range(2):
+        try:
+            async with httpx.AsyncClient(timeout=60) as cli:
+                r = await cli.post(
+                    f"{API_BASE}/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {API_KEY}",
+                        # 部分网关按 UA 拦截 python 客户端,伪装浏览器
+                        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+                    },
+                    json={
+                        "model": MODEL,
+                        "messages": messages,
+                        "temperature": 0,
+                        "max_tokens": max_tokens,
+                        # 关闭思考链,演示场景优先速度(思考会随机拖慢到 40-60s)
+                        "thinking": {"type": "disabled"},
+                    },
+                )
+                r.raise_for_status()
+                return r.json()["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            last_err = e
+    raise last_err or RuntimeError("llm call failed")
 
 # ---------------------------------------------------------------- 编排
 
@@ -192,6 +206,22 @@ def health():
         "metrics": len(METRICS),
     }
 
+
+@app.on_event("startup")
+async def warmup():
+    """启动后预热网关链路,避免首次演示撞上冷连接。"""
+    if not API_KEY:
+        return
+    import asyncio
+
+    async def _warm():
+        try:
+            await llm([{"role": "user", "content": "ping"}], max_tokens=8)
+        except Exception:
+            pass
+
+    asyncio.create_task(_warm())
+
 @app.post("/api/chat")
 async def chat(req: ChatReq):
     q = req.question.strip()
@@ -206,7 +236,7 @@ async def chat(req: ChatReq):
     try:
         router_out = await llm(
             [{"role": "system", "content": ROUTER_SYSTEM}, {"role": "user", "content": q}],
-            max_tokens=1500,
+            max_tokens=300,
         )
     except Exception as e:
         return {"ok": False, "error": f"llm_router: {e}"}
@@ -256,7 +286,7 @@ async def chat(req: ChatReq):
         answer = await llm(
             [{"role": "system", "content": GEN_SYSTEM},
              {"role": "user", "content": f"问题:{q}\n\n证据:\n{ev_text}"}],
-            max_tokens=4096,
+            max_tokens=800,
         )
     except Exception as e:
         return {"ok": False, "error": f"llm_gen: {e}"}
