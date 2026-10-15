@@ -13,6 +13,20 @@ const rows: { label: string; a: string; c: string; win: 'a' | 'c' | 'tie' }[] = 
   { label: '幻觉风险', a: '数字逐字回溯原文', c: '0 幻觉,但数字题无答案', win: 'a' },
 ]
 
+/* LLM-as-judge 盲评(11 道非数字题):隐去来源 + 位置随机 + 四维度 1-5 分 */
+const judgeDims = [
+  { label: '证据忠实度', a: 3.91, c: 3.55 },
+  { label: '信息深度', a: 3.36, c: 3.36 },
+  { label: '结构清晰度', a: 4.27, c: 4.18 },
+  { label: '实用价值', a: 3.36, c: 3.55 },
+]
+
+const judgeByType = [
+  { type: '概念题 ×4', aWin: 4, cWin: 0, note: 'A 点名具体方法与机制(DDPM / Mask R-CNN 先验)' },
+  { type: '多论文总结 ×3', aWin: 2, cWin: 1, note: 'A 引用到具体论文;C+ 的证据/归纳分离更严谨' },
+  { type: '领域理解 ×3', aWin: 0, cWin: 3, note: '纯机制推理题,C+ 通用推理更深(误差累积/虚警机理)' },
+]
+
 export default function Benchmark() {
   return (
     <section className="section" id="benchmark">
@@ -68,6 +82,67 @@ export default function Benchmark() {
                 </p>
                 <p className="bench-case-note">数字逐字来自本地指标库原文抽取,LLM 全程不回忆数字。</p>
               </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={180}>
+          <div className="card judge-card">
+            <div className="judge-head">
+              <div>
+                <div className="judge-title">LLM-as-judge 盲评 · 非数字题质量</div>
+                <div className="judge-sub">
+                  11 题 · 隐去来源 + 位置随机 · 四维度 1-5 分 · 裁判与答题同模型(偏差对等)
+                </div>
+              </div>
+              <div className="judge-score mono">
+                <span className="tone-good">A 6</span>
+                <span className="judge-score-sep">:</span>
+                <span className="tone-mid">5 C+</span>
+              </div>
+            </div>
+
+            <div className="judge-dims">
+              {judgeDims.map((d) => (
+                <div className="judge-dim" key={d.label}>
+                  <div className="judge-dim-label">{d.label}</div>
+                  <div className="judge-bars">
+                    <div className="judge-bar-row">
+                      <span className="judge-bar-tag mono">A</span>
+                      <div className="judge-bar-track">
+                        <div className="judge-bar-fill a" style={{ width: `${(d.a / 5) * 100}%` }} />
+                      </div>
+                      <span className="judge-bar-val mono">{d.a.toFixed(2)}</span>
+                    </div>
+                    <div className="judge-bar-row">
+                      <span className="judge-bar-tag mono">C+</span>
+                      <div className="judge-bar-track">
+                        <div className="judge-bar-fill c" style={{ width: `${(d.c / 5) * 100}%` }} />
+                      </div>
+                      <span className="judge-bar-val mono">{d.c.toFixed(2)}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="judge-types">
+              {judgeByType.map((t) => (
+                <div className="judge-type" key={t.type}>
+                  <div className="judge-type-name">{t.type}</div>
+                  <div className="judge-type-score mono">
+                    <span className={t.aWin > t.cWin ? 'tone-good' : ''}>{t.aWin}</span>
+                    {' : '}
+                    <span className={t.cWin > t.aWin ? 'tone-mid' : ''}>{t.cWin}</span>
+                  </div>
+                  <div className="judge-type-note">{t.note}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="judge-foot">
+              洞察:RAG 补的是<strong>知识</strong>,不是<strong>推理</strong>——需要引用具体论文的题(数字/概念/总结 9:1)碾压;
+              纯机制推理题(0:3)满血大模型占优。
             </div>
           </div>
         </Reveal>

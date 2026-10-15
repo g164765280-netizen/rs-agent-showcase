@@ -1,0 +1,211 @@
+[
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 4
+    },
+    "y": {
+      "evidence": 3,
+      "depth": 2,
+      "structure": 4,
+      "utility": 2
+    },
+    "winner": "A",
+    "reason": "X对三类主流思路给出了具体机制说明（度量学习、重建式风格迁移、一致性约束），信息深度和可操作性更强；Y虽诚实标注证据边界，但内容过于概括，缺乏机制细节。",
+    "id": "c1",
+    "type": "concept",
+    "flip": false
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 4
+    },
+    "y": {
+      "evidence": 3,
+      "depth": 2,
+      "structure": 4,
+      "utility": 3
+    },
+    "winner": "A",
+    "reason": "Y给出三种具体用法并附方法名称与机制细节(如DDPM特征提取、Mask R-CNN+分层注意力扩散),证据更具体、深度更高;X虽诚实标注证据局限,但信息量和可操作性明显不足。",
+    "id": "c2",
+    "type": "concept",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 4,
+      "utility": 4
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 3,
+      "structure": 4,
+      "utility": 4
+    },
+    "winner": "A",
+    "reason": "Y 从机制层面归纳了 Transformer 的三类作用(长程依赖、时空交互、CNN 互补),解释力更强;X 仅列举具体应用案例,机制归纳较浅。",
+    "id": "c3",
+    "type": "concept",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 3,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 4
+    },
+    "winner": "C",
+    "reason": "X明确区分了搜索结果证据与背景知识归纳，证据忠实度更高，且补充了差异模块、无卷积等细节，结构更清晰；Y虽简洁但将未标注来源的论断直接标注引用，忠实度稍弱。",
+    "id": "c4",
+    "type": "concept",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 4
+    },
+    "y": {
+      "evidence": 3,
+      "depth": 3,
+      "structure": 3,
+      "utility": 3
+    },
+    "winner": "A",
+    "reason": "X从标注依赖、特征表示、多模态融合三个机制层面具体阐述了SSL的作用并引用具体方法，深度与结构均优于Y的概括性归纳。",
+    "id": "c5",
+    "type": "concept",
+    "flip": false
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "winner": "A",
+    "reason": "X覆盖样本高效、基础模型、语义变化检测三条趋势且点名SpectralGPT、SemDINO等具体工作，信息面更宽；Y的PEFT视角独到但覆盖面较窄。",
+    "id": "s1",
+    "type": "summary",
+    "flip": false
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "y": {
+      "evidence": 3,
+      "depth": 4,
+      "structure": 4,
+      "utility": 4
+    },
+    "winner": "C",
+    "reason": "X证据忠实但信息覆盖不全、对比单薄;Y明确区分证据与常识归纳,给出完整优劣机制对比与可操作结论,更贴合问题需求。",
+    "id": "s2",
+    "type": "summary",
+    "flip": false
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 4
+    },
+    "y": {
+      "evidence": 3,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "winner": "A",
+    "reason": "Y结合多篇具体论文(AdaDINO、SpectralGPT、SAM适配)给出机制层面的改变分析,证据更具体、维度更丰富;X仅依赖两篇文献且多为推断性归纳,深度和证据支撑较弱。",
+    "id": "s3",
+    "type": "summary",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 3,
+      "depth": 2,
+      "structure": 3,
+      "utility": 2
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 4,
+      "utility": 4
+    },
+    "winner": "C",
+    "reason": "X明确解释了伪标签噪声成为核心问题的机制(误差累积)并给出两类抑制路径,而Y回避了核心因果问题,仅罗列证据。",
+    "id": "u1",
+    "type": "understanding",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 5,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 4,
+      "structure": 5,
+      "utility": 5
+    },
+    "winner": "C",
+    "reason": "X在忠实引用证据的同时系统归纳了影响机制与多层次缓解思路,实用性更强;Y证据引用更严谨但覆盖面窄、可操作性弱。",
+    "id": "u2",
+    "type": "understanding",
+    "flip": true
+  },
+  {
+    "x": {
+      "evidence": 4,
+      "depth": 3,
+      "structure": 4,
+      "utility": 3
+    },
+    "y": {
+      "evidence": 4,
+      "depth": 5,
+      "structure": 5,
+      "utility": 4
+    },
+    "winner": "C",
+    "reason": "X在忠实标注证据的同时补充了成像机理层面的归纳，系统回答了单模态的三类局限，深度与实用性明显优于Y的概括性陈述。",
+    "id": "u3",
+    "type": "understanding",
+    "flip": true
+  }
+]
