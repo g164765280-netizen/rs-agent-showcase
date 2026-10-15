@@ -8,5 +8,11 @@
   {"id": "c2", "type": "concept", "q": "扩散模型在变化检测里是怎么用的?"},
   {"id": "c3", "type": "concept", "q": "Transformer 在变化检测中的应用有哪些?"},
   {"id": "c4", "type": "concept", "q": "ChangeFormer 的核心创新是什么?"},
-  {"id": "c5", "type": "concept", "q": "自监督学习在变化检测中的作用?"}
+  {"id": "c5", "type": "concept", "q": "自监督学习在变化检测中的作用?"},
+  {"id": "s1", "type": "summary", "q": "总结 2024 年以来遥感变化检测方法的演进趋势,需要涉及多篇代表性工作"},
+  {"id": "s2", "type": "summary", "q": "对比 GAN 与扩散模型作为变化检测伪样本生成器的优劣,各举代表性论文"},
+  {"id": "s3", "type": "summary", "q": "视觉基础模型(如 SAM、DINO)被引入变化检测后带来了哪些改变?结合多篇论文说明"},
+  {"id": "u1", "type": "understanding", "q": "为什么伪标签噪声是无监督变化检测的核心问题?现有方法如何抑制?"},
+  {"id": "u2", "type": "understanding", "q": "双时相影像的配准误差会怎样影响变化检测?有哪些缓解思路?"},
+  {"id": "u3", "type": "understanding", "q": "SAR 与光学影像融合在变化检测中解决了什么单模态做不了的问题?"}
 ]

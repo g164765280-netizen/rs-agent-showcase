@@ -82,14 +82,23 @@ API_KEY = os.environ.get("OPENAI_API_KEY", "")
 API_BASE = os.environ.get("OPENAI_API_BASE", "https://api.deepseek.com").rstrip("/")
 MODEL = os.environ.get("DEMO_MODEL", "deepseek-chat")
 
-async def llm(messages, max_tokens=4096) -> str:
+async def llm(messages, max_tokens=4096, thinking=False, return_usage=False):
     if not API_KEY:
         raise RuntimeError("NO_API_KEY")
     last_err: Exception | None = None
+    payload = {
+        "model": MODEL,
+        "messages": messages,
+        "temperature": 0,
+        "max_tokens": max_tokens,
+    }
+    if not thinking:
+        # 演示场景默认关闭思考链(思考会随机拖慢到 40-60s);评测 C 组时开启
+        payload["thinking"] = {"type": "disabled"}
     # 共享网关偶发排队/超时:收紧超时 + 重试一次
     for attempt in range(2):
         try:
-            async with httpx.AsyncClient(timeout=60) as cli:
+            async with httpx.AsyncClient(timeout=180) as cli:
                 r = await cli.post(
                     f"{API_BASE}/chat/completions",
                     headers={
@@ -97,17 +106,14 @@ async def llm(messages, max_tokens=4096) -> str:
                         # 部分网关按 UA 拦截 python 客户端,伪装浏览器
                         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
                     },
-                    json={
-                        "model": MODEL,
-                        "messages": messages,
-                        "temperature": 0,
-                        "max_tokens": max_tokens,
-                        # 关闭思考链,演示场景优先速度(思考会随机拖慢到 40-60s)
-                        "thinking": {"type": "disabled"},
-                    },
+                    json=payload,
                 )
                 r.raise_for_status()
-                return r.json()["choices"][0]["message"]["content"].strip()
+                d = r.json()
+                content = d["choices"][0]["message"]["content"].strip()
+                if return_usage:
+                    return content, d.get("usage", {})
+                return content
         except Exception as e:
             last_err = e
     raise last_err or RuntimeError("llm call failed")
